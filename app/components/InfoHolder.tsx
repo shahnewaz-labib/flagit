@@ -22,6 +22,8 @@ const InfoHolder = async (props: Info) => {
   const country: Country = {
     officialName: info[0].name.official,
     flag: info[0].flags.svg,
+    capital: info[0].capital,
+    region: info[0].subregion,
   };
 
   return (
@@ -31,7 +33,10 @@ const InfoHolder = async (props: Info) => {
           <Image src={country.flag} width={400} height={500} alt="A flag" />
         </div>
         <div className="w-1/2 p-40 font-mono">
-          <div className="text-xl">{country.officialName}</div>
+          <div className="text-3xl">{country.officialName}</div>
+          <div>
+            A country in {country.region} with {country.capital} as its capital.
+          </div>
         </div>
       </div>
     </>
