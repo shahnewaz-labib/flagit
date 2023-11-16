@@ -1,3 +1,4 @@
+import Image from "next/image";
 interface Info {
   country: string;
 }
@@ -8,6 +9,7 @@ interface Country {
   capital?: string;
   region?: string;
   map?: string;
+  flag: string;
 }
 
 const InfoHolder = async (props: Info) => {
@@ -19,11 +21,19 @@ const InfoHolder = async (props: Info) => {
 
   const country: Country = {
     officialName: info[0].name.official,
+    flag: info[0].flags.svg,
   };
 
   return (
     <>
-      <div>Name: {country.officialName}</div>
+      <div className="flex">
+        <div className="w-1/2 p-40">
+          <Image src={country.flag} width={400} height={500} alt="A flag" />
+        </div>
+        <div className="w-1/2 p-40 font-mono">
+          <div className="text-xl">{country.officialName}</div>
+        </div>
+      </div>
     </>
   );
 };

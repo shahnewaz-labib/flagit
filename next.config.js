@@ -4,6 +4,9 @@ const nextConfig = {
         remotePatterns: [
           {
             hostname: 'flagsapi.com',
+          },
+          {
+            hostname: 'flagcdn.com',
           }
         ],
     },
