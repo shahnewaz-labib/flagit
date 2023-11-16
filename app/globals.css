@@ -8,8 +8,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-rgb: 25, 25, 25; /* Set your dark background color */
-    --foreground-rgb: 255, 255, 255; /* Set your light text color for dark mode */
+    --background-rgb: #78716c; /* Set your dark background color */
+    --foreground-rgb: #111827; /* Set your light text color for dark mode */
   }
 }
 

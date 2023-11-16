@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 interface Info {
   country: string;
 }
@@ -10,6 +11,8 @@ interface Country {
   region?: string;
   map?: string;
   flag: string;
+  population: string;
+  demonyms?: string;
 }
 
 const InfoHolder = async (props: Info) => {
@@ -22,20 +25,32 @@ const InfoHolder = async (props: Info) => {
   const country: Country = {
     officialName: info[0].name.official,
     flag: info[0].flags.svg,
-    capital: info[0].capital,
+    capital:
+      info[0].name.official === "State of Palestine"
+        ? info[0].capital[1]
+        : info[0].capital[0],
     region: info[0].subregion,
+    population: info[0].population,
+    demonyms: info[0].demonyms.eng.f,
   };
+
+  console.log(country.demonyms);
 
   return (
     <>
-      <div className="flex">
-        <div className="w-1/2 p-40">
+      <div className="flex p-40">
+        <div className="w-1/4 p-6">
           <Image src={country.flag} width={400} height={500} alt="A flag" />
         </div>
-        <div className="w-1/2 p-40 font-mono">
+        <div className="w-1/2 p-6 font-mono">
           <div className="text-3xl">{country.officialName}</div>
           <div>
-            A country in {country.region} with {country.capital} as its capital.
+            A country in <b>{country.region}</b> with <b>{country.capital}</b>{" "}
+            as its capital.
+          </div>
+          <div>
+            {country.population} people live there and are called{" "}
+            <b>{country.demonyms}</b>.
           </div>
         </div>
       </div>
