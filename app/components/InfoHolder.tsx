@@ -12,7 +12,8 @@ interface Country {
 
 const InfoHolder = async (props: Info) => {
   const response = await fetch(
-    "https://restcountries.com/v3.1/alpha/" + props.country
+    "https://restcountries.com/v3.1/alpha/" + props.country,
+    { cache: "no-cache" }
   );
   const info = await response.json();
 
